@@ -22,14 +22,14 @@ class LearningSwitch(object):
         # Learn MAC address
         self.macToPort[packet.src] = in_port
 
-        # 🔥 IP-based firewall
+        # IP-based firewall
         ip_packet = packet.find('ipv4')
 
         if ip_packet:
             src_ip = str(ip_packet.srcip)
             dst_ip = str(ip_packet.dstip)
 
-            # 🚫 BLOCK h1s1 → h2s2
+            #  BLOCK h1s1 → h2s2
             if src_ip == "10.0.0.1" and dst_ip == "10.0.0.4":
                 log.info("BLOCKED: %s -> %s", src_ip, dst_ip)
                 return
